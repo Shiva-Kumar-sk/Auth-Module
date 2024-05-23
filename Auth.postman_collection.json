@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "e475971f-0343-40f1-96df-9974f3fe123e",
+		"name": "Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29771463"
+	},
+	"item": [
+		{
+			"name": "SignUp",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"vikash\",\r\n    \"email\":\"vikash8@mail.com\",\r\n    \"password\":\"vikash1234\",\r\n    \"password_confirmation\":\"vikash1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/signup",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Email",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"otp\":955287\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/verify-email",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"verify-email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Detail",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseurl}}/get-user-detail",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"get-user-detail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "forgot Password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"vikash3@mail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/forgot-password",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"forgot-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reset password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"vikash3@mail.com\",\r\n    \"otp\":\"773346\",\r\n    \"password\":\"123456789\",\r\n    \"password_confirmation\":\"123456789\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/reset-password",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"reset-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"vikash3@mail.com\",\r\n    \"password\":\"12345677\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/login",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseurl",
+			"value": "http://localhost:8000/api",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTVjMTA2MGU3ZTY2ZGEzY2M3YTcwZmRhZmVlOTYyM2JmOTQwYjA3MTA5NWVhNTIzNzgxOTYxMWJjNmQ1MjIzMDk0MGIwYjc1ZjQyNWQyNDQiLCJpYXQiOjE3MTY0MzkwNjAuNzg0NjQxLCJuYmYiOjE3MTY0MzkwNjAuNzg0NjUxLCJleHAiOjE3NDc5NzUwNjAuNzU2NDkxLCJzdWIiOiIxNSIsInNjb3BlcyI6W119.EZ07rwtj1-GtOr8c1DnYXVS2mXKWOnn_Gg_wF1n2hth-LMB7lcQBLBWQBJCxBusIM83HICLJv-bmpgTpRn4C1CVotgsluBbiOon0yERuDh2APUt4qaYvPVFYlPUjP2jL5LgpzBZ4u3SWNUoiD6fS49nOHRIqOJYmpxqCyUay3osLsP5LhlFOb533tcKtOJw-39ERfnDPXDHOJMfBmfWRj4h-koIypMed6QXQaDhGPzHgTZfZQioqjKD9wGQt6tylX_mSosVamGt_tIVe6UYUJ7vHhrSFyM1tkZZgH61nEFgaGnXhs3EpJEXOQ7ATCOdUfYKgJ8d7f_sOOoIT083OzwON6O08F_W12hOeFpBe_u53gIO6rHcwN6MAjQnJZSsRGBHH_aWHExk-vyDC2RiJkTxA1QaEjAkbb8rStjjww7697MZGwO7vgutgb6YCD6EtTdZnngdtzolOAcoLbVBSOUxe_EU6M6fmhJdJhucH7v_b0muKtwG7T1QKncGrGfNTR_puh2iDfx6nCIbRKtPN-lLcosHVpHoKN13BvIEcxKmjFyDDoDcw9WurWxfkH18cd7DydQVwr0L7lY36KDIgOtjSycV7nkTYXbMt3XzvsZSG9StB7-aMllAPiEeNjpWJkevKG9QSqTTOZx-5rjm6GjLoNUFDv-NAYS2FvRTy00I",
+			"type": "string"
+		}
+	]
+}
